@@ -1,0 +1,23 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "version": "0.2.0",
+      "configurations": [
+        {
+          "name": "Run abc (integrated terminal)",
+          "type": "cppdbg",
+          "request": "launch",
+          "program": "${workspaceFolder}/c/abc",
+          "args": [],
+          "stopAtEntry": false,
+          "cwd": "${workspaceFolder}/c",
+          "environment": [],
+          "externalConsole": false,
+          "console": "integratedTerminal",
+          "preLaunchTask": "Build abc",
+          "MIMode": "gdb",
+          "miDebuggerPath": "/usr/bin/gdb"
+        }
+      ]
+    }

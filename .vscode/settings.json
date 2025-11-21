@@ -1,0 +1,21 @@
+{
+  "code-runner.runInTerminal": true,
+  "code-runner.clearPreviousOutput": true,
+
+  // Disable VS Code inline suggestions globally
+  "editor.inlineSuggest.enabled": false,
+
+  // Disable GitHub Copilot inline suggestions (if Copilot is installed)
+  "github.copilot.inlineSuggest.enable": false,
+
+  // Language-specific: disable inline/quick suggestions for C files
+  "[c]": {
+    "editor.inlineSuggest.enabled": false,
+    "editor.quickSuggestions": {
+      "other": false,
+      "comments": false,
+      "strings": false
+    }
+  }
+}
+
