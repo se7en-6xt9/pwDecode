@@ -1,42 +1,51 @@
 #include <iostream>
+#include <vector>
 using namespace std;
 
-int partition(int arr[], int si, int ei) {
-    int pivot = arr[ei];
-    int i = si - 1;
+void merge(int arr[], int si, int mid, int ei) {
+    int i = si, j = mid + 1;
+    vector<int> v;
 
-    for (int j = si; j < ei; j++) {
-        if (arr[j] <= pivot) {
-            i++;
-            swap(arr[i], arr[j]);
+    while (i <= mid && j <= ei) {
+        if (arr[i] <= arr[j]) {
+            v.push_back(arr[i++]);
+        } else {
+            v.push_back(arr[j++]);
         }
     }
 
-    i++;
-    swap(arr[i], arr[ei]);
-    return i;
-}
+    while (i <= mid) {
+        v.push_back(arr[i++]);
+    }
 
-void quickSort(int arr[], int si, int ei) {
-    if (si >= ei) return;
+    while (j <= ei) {
+        v.push_back(arr[j++]);
+    }
 
-    int pivotIdx = partition(arr, si, ei);
-    quickSort(arr, si, pivotIdx - 1);
-    quickSort(arr, pivotIdx + 1, ei);
-}
-
-void printArr(int arr[], int n) {
-    for (int i = 0; i < n; i++) {
-        cout << arr[i] << " ";
+    // copy back to original array
+    for (int k = 0; k < v.size(); k++) {
+        arr[si + k] = v[k];
     }
 }
 
+void split(int arr[], int si, int ei) {
+    if (si >= ei) return;
+
+    int mid = si + (ei - si) / 2;
+    split(arr, si, mid);
+    split(arr, mid + 1, ei);
+    merge(arr, si, mid, ei);
+}
+
 int main() {
-    int arr[] = {1,4,7,3,0,8,2};
+    int arr[] = {1, 3, 6, 5, 8, 9, 4};
     int n = sizeof(arr) / sizeof(arr[0]);
 
-    quickSort(arr, 0, n - 1);
-    printArr(arr, n);
+    split(arr, 0, n - 1);
 
+    cout << "Sorted array:\n";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
     return 0;
 }
