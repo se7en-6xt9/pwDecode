@@ -1,0 +1,37 @@
+#include<stdio.h>
+int main(){
+    int a=50;
+    int *b=&a;
+    int **c=&b;
+    printf("\n");
+    printf(" a = %d", a);      // a = 50     
+    printf("\n");
+    printf(" &a = %d", &a); // &a = 1518009172
+    printf("\n");
+    printf(" b = %d", b);   //b = 1518009172
+    printf("\n");
+    printf(" &b = %d", &b); //  &b = 1518009176
+    printf("\n");
+    printf(" *b = %d", *b); //*b = 50
+    printf("\n");
+    printf(" c = %d", c);   //c = 1518009176
+    printf("\n");
+    printf(" &c = %d", &c);  ////  &c = 1518009184
+    printf("\n");
+    printf(" *c = %d", *c); //*c = 1518009172
+    printf("\n");
+    printf(" **c = %d", **c); //  **c = 50
+    printf("\n");
+    return 0;
+    
+}
+
+//  a = 50
+//  &a = 1518009172
+//  b = 1518009172
+//  &b = 1518009176
+//  *b = 50
+//  c = 1518009176
+//  &c = 1518009184
+//  *c = 1518009172
+//  **c = 50
